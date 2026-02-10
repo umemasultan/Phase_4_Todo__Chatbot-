@@ -311,6 +311,12 @@ cat /etc/hosts | grep todo-chatbot
 
 This project is licensed under the MIT License.
 
+## Author
+
+**Umema Sultan**
+
+Created with passion and dedication to build an AI-powered task management solution.
+
 ## Acknowledgments
 
 - [Anthropic](https://www.anthropic.com/) for Claude AI
