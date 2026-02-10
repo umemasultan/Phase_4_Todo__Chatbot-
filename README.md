@@ -311,11 +311,6 @@ cat /etc/hosts | grep todo-chatbot
 
 This project is licensed under the MIT License.
 
-## Author
-
-**Umema Sultan**
-
-Created with passion and dedication to build an AI-powered task management solution.
 
 ## Acknowledgments
 
@@ -333,5 +328,11 @@ For issues or questions:
 - Open an issue on GitHub
 
 ---
+
+## Author
+
+**Umema Sultan**
+
+Created with passion and dedication to build an AI-powered task management solution.
 
 **Built with ❤️ using Spec-Driven Development**
