@@ -1,0 +1,44 @@
+# Development environment overrides
+# Use with: helm install -f values-dev.yaml
+
+# Backend - lower resources for local dev
+backend:
+  replicaCount: 1
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "300m"
+
+  autoscaling:
+    enabled: false
+
+# Frontend - lower resources for local dev
+frontend:
+  replicaCount: 1
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "50m"
+    limits:
+      memory: "128Mi"
+      cpu: "100m"
+
+# PostgreSQL - lower resources for local dev
+postgres:
+  persistence:
+    size: 5Gi
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "300m"
+
+# Application configuration
+config:
+  nodeEnv: development
+  logLevel: debug

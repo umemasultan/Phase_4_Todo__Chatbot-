@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "todo-chatbot.labels" . | nindent 4 }}
+data:
+  NODE_ENV: {{ .Values.config.nodeEnv | quote }}
+  LOG_LEVEL: {{ .Values.config.logLevel | quote }}
+  PORT: "3000"
+  DB_HOST: "postgres-service"
+  DB_PORT: {{ .Values.postgres.service.port | quote }}
+  DB_NAME: {{ .Values.postgres.database | quote }}
+  JWT_EXPIRES_IN: {{ .Values.config.jwtExpiresIn | quote }}
+  FEATURE_CHAT_HISTORY: {{ .Values.config.features.chatHistory | quote }}
+  FEATURE_AI_SUGGESTIONS: {{ .Values.config.features.aiSuggestions | quote }}
+  FEATURE_HEALTH_CHECK_CLAUDE: {{ .Values.config.features.healthCheckClaude | quote }}

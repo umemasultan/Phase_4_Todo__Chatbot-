@@ -1,0 +1,60 @@
+// Prisma schema for Todo Chatbot
+// Database: SQLite (for local development)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  password     String        // bcrypt hashed
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  todos        Todo[]
+  chatMessages ChatMessage[]
+
+  @@map("users")
+}
+
+model Todo {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  description String?
+  status      String   @default("PENDING")
+  dueDate     DateTime? @map("due_date")
+  priority    String   @default("MEDIUM")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([dueDate])
+  @@map("todos")
+}
+
+model ChatMessage {
+  id        String      @id @default(uuid())
+  userId    String      @map("user_id")
+  role      String
+  content   String
+  createdAt DateTime    @default(now()) @map("created_at")
+
+  // Relations
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("chat_messages")
+}

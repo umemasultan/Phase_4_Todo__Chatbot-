@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: todo-chatbot
+data:
+  # Application settings
+  NODE_ENV: "production"
+  LOG_LEVEL: "info"
+  PORT: "3000"
+
+  # Database connection
+  DB_HOST: "postgres-service"
+  DB_PORT: "5432"
+  DB_NAME: "todo_chatbot"
+
+  # JWT settings
+  JWT_EXPIRES_IN: "7d"
+
+  # Feature flags
+  FEATURE_CHAT_HISTORY: "true"
+  FEATURE_AI_SUGGESTIONS: "true"
+  FEATURE_HEALTH_CHECK_CLAUDE: "false"

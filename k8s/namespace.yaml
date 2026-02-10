@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: todo-chatbot
+  labels:
+    name: todo-chatbot
+    app: todo-chatbot
